@@ -79,7 +79,11 @@ function CartDAO(database) {
          *
          */
 
-        callback(null);
+      this.db.collection('cart').find({userId: userId}).toArray(function(err, docs) {
+
+      });
+
+        //callback(null);
 
         // TODO-lab6 Replace all code above (in this method).
     }
