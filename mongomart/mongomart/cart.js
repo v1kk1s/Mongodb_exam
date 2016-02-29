@@ -54,6 +54,7 @@ function CartDAO(database) {
     this.itemInCart = function(userId, itemId, callback) {
         "use strict";
 
+      userId = "558098a65133816958968d88";  //temp
         /*
          *
          * TODO-lab6
@@ -79,13 +80,13 @@ function CartDAO(database) {
          *
          */
 
-      this.db.collection('cart').find({userId: userId}).toArray(function(err, docs) {
-
+      //console.log(userId, itemId);
+      this.db.collection('cart').find({userId: userId, "items._id": itemId }, {_id:0, "items.$":1}).toArray(function(err, docs) {
+        callback(docs[0].items[0]);
       });
 
-        //callback(null);
-
-        // TODO-lab6 Replace all code above (in this method).
+      callback(null);
+      // TODO-lab6 Replace all code above (in this method).
     }
 
     
